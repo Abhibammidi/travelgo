@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TravelGo - Explore the World</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+    }
+    nav h1 {
+      font-size: 2.2rem;
+      color: #00eaff;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffc107;
+    }
+    .hero {
+      text-align: center;
+      padding: 160px 20px 100px;
+    }
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      color: #00eaff;
+      text-shadow: 2px 2px 5px #000;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 750px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .about, .features {
+      text-align: center;
+    }
+    .about p {
+      font-size: 1.15rem;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 35px;
+      border-radius: 14px;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid #333;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+    }
+    .card h3 {
+      margin-bottom: 22px;
+      color: #ffc107;
+      font-size: 1.4rem;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 24px;
+      background: #00eaff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .card a:hover {
+      background: #ffc107;
+      color: #000;
+    }
+    footer {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    footer a {
+      color: #00eaff;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+    footer a:hover {
+      color: #ffc107;
+    }
+    #welcomeUser {
+      text-align: right;
+      padding: 12px 20px;
+      font-size: 1rem;
+      color: #ffc107;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>TravelGo</h1>
+  <div>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+    <a href="#" onclick="logoutUser()">Logout</a>
+  </div>
+</nav>
+
+<div id="welcomeUser"></div>
+
+<div class="hero">
+  <h2>Discover New Journeys</h2>
+  <p>Book flights, trains, buses, and hotels in minutes. Trusted by thousands of travelers worldwide.</p>
+</div>
+
+<section class="about">
+  <h2>About TravelGo</h2>
+  <p>
+    TravelGo was created by travel enthusiasts who believe planning a journey should be as exciting as the adventure itself.
+    Our mission is to make travel bookings effortless, reliable, and inspiring — connecting you with the best flights, trains, hotels, and buses in one platform.
+  </p>
+</section>
+
+<section class="features">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Flight Bookings</h3>
+      <a href="/flight">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Train Tickets</h3>
+      <a href="/train">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Bus Reservations</h3>
+      <a href="/bus">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Hotel Rooms</h3>
+      <a href="/hotel">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 TravelGo. |
+  <a href="#">Instagram</a>
+  <a href="#">Facebook</a>
+  <a href="#">LinkedIn</a>
+</footer>
+
+<script>
+  const loggedUserData = localStorage.getItem("loggedInUser");
+  if (loggedUserData) {
+    const user = JSON.parse(loggedUserData);
+    document.getElementById("welcomeUser").innerText = Welcome, ${user.name}!;
+  }
+
+  function logoutUser() {
+    localStorage.removeItem("loggedInUser");
+    alert("You have been logged out.");
+    window.location.href = "/login";
+  }
+</script>
+
+</body>
+</html>
